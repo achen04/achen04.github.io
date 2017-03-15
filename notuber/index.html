@@ -3,9 +3,10 @@
 <html>
 
 	<head>
-		<title>Geolocation Map Example</title>
+		<title>Not Uber</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=geometry"></script>
+
 		<link rel="stylesheet" href="style.css" />
 		
 		<script>
@@ -14,7 +15,7 @@
 			var request = new XMLHttpRequest();
 			var me = new google.maps.LatLng(myLat, myLng);
 			var myOptions = {
-						zoom: 13, // The larger the zoom number, the bigger the zoom
+						zoom: 16,
 						center: me,
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
@@ -51,7 +52,8 @@
 				// Create a marker
 				marker = new google.maps.Marker({
 					position: me,
-					title: "Here I Am!"
+					title: "Username: aj5P8OGT",
+					icon: "personal_marker.png"
 				});
 				marker.setMap(map);
 					
@@ -72,13 +74,70 @@
 					http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					http.onreadystatechange = function() {
 	    				if(http.readyState == 4 && http.status == 200) {
-	      					console.log(http.responseText);
+	      					var elements = JSON.parse(http.responseText);
+	      					if (elements.vehicles == null) {
+	      						displayPassengerIcon(elements.passengers);
+	      					} else {
+	      						displayVehicleIcon(elements.vehicles);
+	      					}
+
 	    				}
     				}
 					http.send(params);
 				}
 
-			
+				function displayVehicleIcon(info)
+				{
+					for (count = 0; count < info.length; count++){
+						var LatLng = new google.maps.LatLng(info[count].lat, info[count].lng);
+						var distanceMeters = google.maps.geometry.spherical.computeDistanceBetween(me, LatLng);
+						var distanceMiles = distanceMeters * 0.000621371192;
+						var marker = new google.maps.Marker({
+							position: LatLng,
+							title: "Passenger " + info[count].username + " is " + distanceMiles +
+							" miles away.",
+							map: map,
+							icon: "black_car_resize.png"
+						});
+
+						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.setContent(this.title);
+							infowindow.open(map, this);
+						});
+
+
+					}
+
+					marker.setMap(map);
+				}
+
+				function displayPassengerIcon(info)
+				{
+					for (count = 0; count < info.length; count++){
+						var LatLng = new google.maps.LatLng(info[count].lat, info[count].lng);
+						var distanceMeters = google.maps.geometry.spherical.computeDistanceBetween(me, LatLng);
+						var distanceMiles = distanceMeters * 0.000621371192;
+						var marker = new google.maps.Marker({
+							position: LatLng,
+							title: "Passenger " + info[count].username + " is " + distanceMiles +
+							" miles away.",
+							map: map,
+							icon: "passenger.png"
+						});
+
+						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.setContent(this.title);
+							infowindow.open(map, this);
+						});
+
+
+					}
+
+					marker.setMap(map);
+				}
+
+
+
 		</script>
 	</head>
 	

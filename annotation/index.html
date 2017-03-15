@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Fail</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Fail</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/fail.mp4" id="failvideo" controls></video>
+<div id="lyrics"></div>
+
+<script>
+	var video = document.getElementById("failvideo");
+
+	video.addEventListener("timeupdate", function(){
+		if (video.currentTime > 9) {
+			document.getElementById("lyrics").innerHTML = "You've got me feelin' emotions";
+		}
+
+		if (video.currentTime > 13) {
+			document.getElementById("lyrics").innerHTML = "Deeper than I've ever dreamed of";
+		}
+
+		if (video.currentTime > 17) {
+			document.getElementById("lyrics").innerHTML = "You've got me feelin' emotions";
+		}
+
+		if (video.currentTime > 21) {
+			document.getElementById("lyrics").innerHTML = "Higher than the heavens above";
+		}
+
+		if (video.currentTime > 26) {
+			document.getElementById("lyrics").innerHTML = "I feel good, I feel nice";
+		}
+		
+		if (video.currentTime > 29) {
+			document.getElementById("lyrics").innerHTML = "I've never felt so satisfied";
+		}
+
+		if (video.currentTime > 34) {
+			document.getElementById("lyrics").innerHTML = "I'm in love, I'm alive";
+		}
+
+		if (video.currentTime > 39) {
+			document.getElementById("lyrics").innerHTML = "Intoxicated, flyin' high";
+		}
+		
+		if (video.currentTime > 43) {
+			document.getElementById("lyrics").innerHTML = "Feels like a dream";
+		}
+
+		if (video.currentTime > 45) {
+			document.getElementById("lyrics").innerHTML = "When you touch me tenderly";
+		}
+
+		if (video.currentTime > 50) {
+			document.getElementById("lyrics").innerHTML = "I don't know if it's real";
+		}
+
+		if (video.currentTime > 55) {
+			document.getElementById("lyrics").innerHTML = "But I like the way I feel inside";
+		}
+
+		if (video.currentTime > 59) {
+			document.getElementById("lyrics").innerHTML = "You've got me feelin' emotions";
+		}
+		
+		if (video.currentTime > 63) {
+			document.getElementById("lyrics").innerHTML = "Deeper than I've ever dreamed of";
+		}
+
+		if (video.currentTime > 67) {
+			document.getElementById("lyrics").innerHTML = "You've got me feelin' emotions";
+		}
+
+		if (video.currentTime > 73) {
+			document.getElementById("lyrics").innerHTML = "Higher than the heavens above";
+		}
+		
+	});
+
+</script>
+</body>
+</html>	
