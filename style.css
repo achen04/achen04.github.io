@@ -1,0 +1,31 @@
+body {
+	font-family: Helvetica;
+	color: dimgrey;
+}
+
+h1 {
+	text-align: center;
+	color:steelblue;
+}
+
+h3 {
+	color: #484646;
+}
+#profilePhoto {
+	width: 400px;
+	margin-left: 10%;
+	float: left;
+
+}
+
+#links {
+	margin-left: 40%;
+}
+
+#bio {
+	width: 700px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+
+}
